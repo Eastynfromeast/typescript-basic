@@ -23,7 +23,7 @@ function divide(a: number, b: number) {
 // divide("hello")
 //expecting 2 args, but got 1
 
-const player = {
+const player0 = {
 	age: 12,
 };
 
