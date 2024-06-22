@@ -57,17 +57,18 @@ add(1,2,3)
     # Polymorphism 다형성
         many different forms or structure
         
-        Generic is kind of placeholder for your type
+    # Generic 
+        is kind of placeholder for your type
+        and it is generating signature calls on demand for us
+
 */
 
-type SuperPrint = {
-	<T>(arr: T[]): T;
-	// let TS knows this call signature is going to receive generics
-};
+type SuperPrint = <T, V>(a: T[], b: V) => T;
+// let TS knows this call signature is going to receive generics
 
 const superPrint: SuperPrint = arr => arr[0];
 
-const x = superPrint([1, 2, 3, 4]);
-superPrint([true, false, true]);
-superPrint(["a", "b", "c"]);
-const g = superPrint([1, 2, true, false, "hello"]); // No overload matches this call
+superPrint([1, 2, 3, 4], "x");
+superPrint([true, false, true], 1);
+superPrint(["a", "b", "c"], false);
+superPrint([1, 2, true, false, "hello"], "bye"); // No overload matches this call
