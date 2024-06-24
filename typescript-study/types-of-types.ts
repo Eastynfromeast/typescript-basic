@@ -14,12 +14,12 @@
 
 type Age = number;
 
-type Player = {
+type Player1 = {
 	readonly name: string;
 	age?: Age;
 };
 
-const playerMaker = (name: string): Player => ({ name });
+const playerMaker = (name: string): Player1 => ({ name });
 /* function playerMaker(name: string): Player {
 	return {
 		name,
