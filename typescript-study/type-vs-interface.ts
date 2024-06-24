@@ -53,3 +53,7 @@ function makeUser(user: IUser) {
 	sayHi: name => "string",
 });
  */
+
+/*
+	Polymorphism
+*/
