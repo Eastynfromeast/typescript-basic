@@ -1,11 +1,11 @@
-# Call signature
-    is the type of the arguments and return value of a function
-    A call signature doesn't have the implementation of the funciton
-    Call signatures will not be complied into JS
-    We can use the same call signature for multiple functions
+# Call Signature
+    call signature는 전달 인자의 타입과 함수의 반환 값을 명시합니다.
+    call signature는 함수의 기능 구현은 하지 않습니다 (당신이 해야하는 일)
+    call signature는 자바스크립트 코드로 컴파일되지 않습니다.
+    하나의 call signature를 다양한 함수에 사용할 수 있습니다.
 
 
-#Overloading
+# Overloading
     오버로딩은 하나의 함수가 여러 개의 콜 시그니처를 가질 때 일어납니다.
     오버로딩은 다른 arguments 타입을 받아들여야 할 때 사용합니다.
 
