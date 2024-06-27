@@ -1,4 +1,4 @@
-type Words = {
+/* type Words = {
 	[key: string]: string;
 };
 
@@ -37,3 +37,4 @@ const dict = new Dict();
 
 dict.add(kimchi);
 dict.def("kimchi");
+ */
