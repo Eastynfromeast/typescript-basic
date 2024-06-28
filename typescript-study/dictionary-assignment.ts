@@ -31,11 +31,12 @@ class Dict {
 			console.log(`${word.term} 이/가 추가 되었습니다.`);
 		}
 	}
-	get(term: string): string | undefined {
+	get(term: string): string | boolean {
 		if (this.words[term] !== undefined) {
 			return this.words[term];
 		} else {
 			console.log(`${term}은 존재하지 않는 단어입니다.`);
+			return false;
 		}
 	}
 	delete(term: string) {
