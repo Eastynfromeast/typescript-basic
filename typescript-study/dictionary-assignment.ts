@@ -16,6 +16,13 @@ bulkDelete: 다음과 같은 방식으로. 여러개의 단어를 한번에 삭�
 // abstact class 추가해보기
 // https://huchu.link/yC4weA5 펭구스님 코드
 
+/*
+	OOP
+	함수형 프로그래밍 
+		순수 함수
+		테스트 코드
+*/
+
 type TWord = {
 	[key: string]: string;
 };
@@ -54,7 +61,7 @@ class Dict {
 		}
 	}
 	showAll(): Object {
-		console.log(`이 사전에 등록된 단어 리스트 입니다 : ${this.words}`);
+		console.log(`이 사전에 등록된 단어 리스트 입니다 : ${JSON.stringify(this.words)})`);
 		return this.words;
 	}
 	count(): number {
@@ -101,39 +108,48 @@ const ham = new Word("hamster", "squick");
 
 const buddies = new Dict();
 
-function testDictionaryFns(): void {
-	const addPuppy = buddies.add(puppy);
-	const addKitty = buddies.add(kitty);
+const addPuppy = buddies.add(puppy);
+const addKitty = buddies.add(kitty);
 
-	const getPuppy = buddies.get("dog");
+const getPuppy = buddies.get("dog");
 
-	const deleteHam = buddies.delete("hamster");
+const deleteHam = buddies.delete("hamster");
 
-	kitty.def = "pur pur pur";
-	const updateKitty = buddies.update(kitty);
+kitty.def = "pur pur pur";
+const updateKitty = buddies.update(kitty);
 
-	const showAllBuddies = buddies.showAll();
-	console.log(showAllBuddies);
+const showAllBuddies = buddies.showAll();
+console.log(showAllBuddies);
 
-	const countBuddies = buddies.count();
-	console.log(countBuddies);
+const countBuddies = buddies.count();
+console.log(countBuddies);
 
-	const ninza = new Word("tortoise", "slow but fast");
-	const upsertNinza = buddies.upsert(ninza);
+const ninza = new Word("tortoise", "slow but fast");
+const upsertNinza = buddies.upsert(ninza);
 
-	ham.def = "ham-to-ri";
-	const upsertHam = buddies.upsert(ham);
+ham.def = "ham-to-ri";
+const upsertHam = buddies.upsert(ham);
 
-	const existsNinza = buddies.exists(ninza.term);
-	console.log(`Ninza is existing in the dict? : ${existsNinza}`);
+const existsNinza = buddies.exists(ninza.term);
+console.log(`Ninza is existing in the dict? : ${existsNinza}`);
 
-	const newBuddies = [
-		{ term: "pony", def: "short legs" },
-		{ term: "racoon", def: "chubby" },
-	];
-	const bulkAddBuddies = buddies.bulkAdd(newBuddies);
+const newBuddies = [
+	{ term: "pony", def: "short legs" },
+	{ term: "racoon", def: "chubby" },
+];
+const bulkAddBuddies = buddies.bulkAdd(newBuddies);
 
-	const bulkDeleteBuddies = buddies.bulkDelete(newBuddies);
-}
+const bulkDeleteBuddies = buddies.bulkDelete(newBuddies);
 
-testDictionaryFns();
+/*
+	헨리님이 주신 테스트 코드 예시
+	const assertEq = <T,>(testName: string, actual: T, expected: T) => {
+		if (JSON.stringify(expected) !== JSON.stringify(actual)) {
+			throw Error(`${testName} FAIL:\nactual: ${actual}\nexpected: ${expected}`);
+		}
+		console.log(`${testName} PASS`)
+	}
+
+	assertEq("get", dict.get("김치"), "대박이네");
+
+*/

@@ -1,9 +1,10 @@
-interface SStorage<T> {
+/* interface SStorage<T> {
 	[key: string]: T;
 }
 
-class LocalStorage<T> {
-	private storage: SStorage<T> = {};
+class LLocalStorage<T> {
+	private storage: SStorage<T> = {} as SStorage<T>;
+
 	set(key: string, value: T) {
 		this.storage[key] = value;
 	}
@@ -18,10 +19,10 @@ class LocalStorage<T> {
 	}
 }
 
-const stringsStorage = new LocalStorage<string>();
+const stringsStorage = new LLocalStorage<string>();
 stringsStorage.get("adklfsd");
 stringsStorage.set("hello", `${Date.now()}`);
 
-const booleansStorage = new LocalStorage<boolean>();
+const booleansStorage = new LLocalStorage<boolean>();
 booleansStorage.get("false");
-booleansStorage.set("xxx", true);
+booleansStorage.set("xxx", true); */
