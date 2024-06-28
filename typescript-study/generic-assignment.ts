@@ -73,11 +73,11 @@ function last<T>(arr: T[]): T | number {
 	return arr.length > 0 ? arr[arr.length - 1] : 0;
 }
 
-function prepend<T>(arr: T[], item: T): T[] {
+function prepend<T, U>(arr: T[], item: U): (T | U)[] {
 	return [item, ...arr];
 }
 
-function mix<T>(a: T[], b: T[]): T[] {
+function mix<T, U>(a: T[], b: U[]): (T | U)[] {
 	return [...a, ...b];
 }
 

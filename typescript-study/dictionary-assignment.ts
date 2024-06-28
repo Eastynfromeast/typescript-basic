@@ -13,6 +13,9 @@ bulkAdd: 다음과 같은 방식으로. 여러개의 단어를 한번에 추가�
 bulkDelete: 다음과 같은 방식으로. 여러개의 단어를 한번에 삭제할 수 있게 해줌. ["김치", "아파트"]
 */
 
+// abstact class 추가해보기
+// https://huchu.link/yC4weA5 펭구스님 코드
+
 type TWord = {
 	[key: string]: string;
 };
@@ -25,14 +28,14 @@ class Dict {
 	add(word: Word) {
 		if (this.words[word.term] === undefined) {
 			this.words[word.term] = word.def;
+			console.log(`${word.term} 이/가 추가 되었습니다.`);
 		}
 	}
-	get(term: string) {
+	get(term: string): string | undefined {
 		if (this.words[term] !== undefined) {
 			return this.words[term];
 		} else {
 			console.log(`${term}은 존재하지 않는 단어입니다.`);
-			return false;
 		}
 	}
 	delete(term: string) {
@@ -44,24 +47,29 @@ class Dict {
 	update(word: Word) {
 		if (this.words[word.term] !== undefined) {
 			this.words[word.term] = word.def;
+			console.log(`${word.term} 이/가 업데이트 되었습니다.`);
 		} else {
 			console.log(`${word.term}은 존재하지 않는 단어입니다.`);
 		}
 	}
-	showAll() {
+	showAll(): Object {
+		console.log(`이 사전에 등록된 단어 리스트 입니다 : ${this.words}`);
 		return this.words;
 	}
-	count() {
+	count(): number {
+		console.log(`이 사전에 등록된 단어의 개수는 ${Object.keys(this.words).length} 입니다.`);
 		return Object.keys(this.words).length;
 	}
 	upsert(word: Word) {
 		if (this.words[word.term] !== undefined) {
 			this.words[word.term] = word.def;
+			console.log(`${word.term} 이/가 upsert 되었습니다.`);
 		} else {
 			this.add(word);
+			console.log(`${word.term} 이/가 upsert 함수로 추가 되었습니다.`);
 		}
 	}
-	exists(term: string) {
+	exists(term: string): boolean {
 		if (this.words[term] !== undefined) {
 			console.log(`${term}이 사전 내에 존재합니다.`);
 			return true;
@@ -92,30 +100,39 @@ const ham = new Word("hamster", "squick");
 
 const buddies = new Dict();
 
-const addPuppy = buddies.add(puppy);
-const addKitty = buddies.add(kitty);
+function testDictionaryFns(): void {
+	const addPuppy = buddies.add(puppy);
+	const addKitty = buddies.add(kitty);
 
-const getPuppy = buddies.get("dog");
-const deleteHam = buddies.delete("hamster");
+	const getPuppy = buddies.get("dog");
 
-kitty.def = "pur pur pur";
-const updateKitty = buddies.update(kitty);
+	const deleteHam = buddies.delete("hamster");
 
-const showAllBuddies = buddies.showAll();
+	kitty.def = "pur pur pur";
+	const updateKitty = buddies.update(kitty);
 
-const countBuddies = buddies.count();
+	const showAllBuddies = buddies.showAll();
+	console.log(showAllBuddies);
 
-const ninza = new Word("tortoise", "slow but fast");
-const upsertNinza = buddies.upsert(ninza);
-ham.def = "ham-to-ri";
-const upsertHam = buddies.upsert(ham);
+	const countBuddies = buddies.count();
+	console.log(countBuddies);
 
-const existsNinza = buddies.exists(ninza.term);
+	const ninza = new Word("tortoise", "slow but fast");
+	const upsertNinza = buddies.upsert(ninza);
 
-const newBuddies = [
-	{ term: "pony", def: "short legs" },
-	{ term: "racoon", def: "chubby" },
-];
-const bulkAddBuddies = buddies.bulkAdd(newBuddies);
+	ham.def = "ham-to-ri";
+	const upsertHam = buddies.upsert(ham);
 
-const bulkDeleteBuddies = buddies.bulkDelete(newBuddies);
+	const existsNinza = buddies.exists(ninza.term);
+	console.log(`Ninza is existing in the dict? : ${existsNinza}`);
+
+	const newBuddies = [
+		{ term: "pony", def: "short legs" },
+		{ term: "racoon", def: "chubby" },
+	];
+	const bulkAddBuddies = buddies.bulkAdd(newBuddies);
+
+	const bulkDeleteBuddies = buddies.bulkDelete(newBuddies);
+}
+
+testDictionaryFns();
